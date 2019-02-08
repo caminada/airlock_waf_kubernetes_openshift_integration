@@ -3,7 +3,7 @@ To use Airlock WAF as Reverse Proxy without human interaction in a Kubernetes or
 Our recommendations are:
 * set Airlock WAF in front of a Kubernetes or OpenShift environment
 * use Ingress in case of Kubernetes or Route in case of OpenShift
-* Listen on Ingress or Route events and create a Airlock WAF configuration via REST API
+* listen on Ingress or Route events and create a Airlock WAF configuration via REST API
 
 ![Blueprint](docs/blueprint.png)
 
@@ -56,7 +56,7 @@ http echo server will be deployed, which mirror the http client request.
 1. Verify that the event listener application collect the ingress event: `./kubernetes-setup.sh --show-event-listener-logs`
 1. HTTP request over the Airlock WAF: `curl -vk "${AIRLOCK_WAF_IP}:8080" -H "Host: myminikube.info"`
 
-# OpenShift
+## OpenShift
 1. Clean Up Airlock WAF configuration history and import initial configuration: `./airlock-cleanup.sh --waf "${AIRLOCK_WAF_IP}" --minishift`
 1. Delete previous setup: `./openshift-setup.sh --clean`
 1. Build and deploy the event listener application: `./openshift-setup.sh --add-event-listener`
